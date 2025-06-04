@@ -24,3 +24,9 @@ cd ~/projects/gostvpn-lab/build/openssl-1.1.1/openssl-1.1.1u
 ./config enable-gost --prefix=/usr/local/openssl-gost
 make -j$(nproc)
 sudo make install
+
+## Environment setup after OpenSSL installation
+
+Environment variables exported in ~/.bashrc:
+export PATH=/usr/local/openssl-gost/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/openssl-gost/lib:$LD_LIBRARY_PATH
