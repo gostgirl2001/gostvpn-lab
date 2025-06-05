@@ -57,3 +57,10 @@ sudo make install
 ## Verifying GOST engine availability
 
 OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 openssl engine -c gost
+
+## Downloading OpenVPN 2.5.9
+
+cd ~/projects/gostvpn-lab/build
+wget https://swupdate.openvpn.org/community/releases/openvpn-2.5.9.tar.gz
+tar -xf openvpn-2.5.9.tar.gz
+cd openvpn-2.5.9
