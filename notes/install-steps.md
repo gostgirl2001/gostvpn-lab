@@ -64,3 +64,20 @@ cd ~/projects/gostvpn-lab/build
 wget https://swupdate.openvpn.org/community/releases/openvpn-2.5.9.tar.gz
 tar -xf openvpn-2.5.9.tar.gz
 cd openvpn-2.5.9
+
+## Building OpenVPN 2.5.9 with GOST-enabled OpenSSL
+
+Dependencies installed:
+sudo apt install liblzo2-dev libpam0g-dev
+
+Build process:
+cd ~/projects/gostvpn-lab/build/openvpn-2.5.9
+./configure --prefix=/usr/local/openvpn-gost --with-crypto-library=openssl LDFLAGS="-L/usr/local/openssl-gost/lib" CPPFLAGS="-I/usr/local/openssl-gost/include"
+make -j$(nproc)
+sudo make install
+
+## Verifying OpenVPN/OpenSSL linkage
+
+/usr/local/openvpn-gost/sbin/openvpn --version
+
+Visual confirmation: OpenVPN 2.5.9/OpenSSL 1.1.1u
