@@ -45,3 +45,15 @@ sudo make install
 
 Environment variable exported in ~/.bashrc:
 export PATH=/usr/local/cmake/bin:$PATH
+
+## Building the GOST engine
+
+cd ~/projects/gostvpn-lab/build/gost-engine
+mkdir build-cmake && cd build-cmake
+cmake .. -DOPENSSL_ROOT_DIR=/usr/local/openssl-gost -DOPENSSL_ENGINES_DIR=/usr/local/openssl-gost/lib/engines-1.1 -DCMAKE_INSTALL_PREFIX=/usr/local/openssl-gost
+make -j$(nproc)
+sudo make install
+
+## Verifying GOST engine availability
+
+OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 openssl engine -c gost
