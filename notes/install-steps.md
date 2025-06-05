@@ -2,7 +2,7 @@
 
 Cloned into: 'build/gost-engine'
 
-Command used: git clone https://github.com/gost-engine/engine.git build/gost-engine
+Command used: git clone -b openssl_1_1_1 https://github.com/gost-engine/engine.git ~/projects/gostvpn-lab/build/gost-engine
 
 ## OpenSSL 1.1.1u
 
@@ -30,3 +30,13 @@ sudo make install
 Environment variables exported in ~/.bashrc:
 export PATH=/usr/local/openssl-gost/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/openssl-gost/lib:$LD_LIBRARY_PATH
+
+## Upgrading CMake (3.18+ required)
+
+cd ~/projects/gostvpn-lab/build
+wget https://github.com/Kitware/CMake/releases/download/v3.27.9/cmake-3.27.9.tar.gz
+tar -xf cmake-3.27.9.tar.gz
+cd cmake-3.27.9
+./bootstrap --prefix=/usr/local/cmake
+make -j$(nproc)
+sudo make install
