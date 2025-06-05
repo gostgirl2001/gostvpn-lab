@@ -40,3 +40,8 @@ cd cmake-3.27.9
 ./bootstrap --prefix=/usr/local/cmake
 make -j$(nproc)
 sudo make install
+
+## Environment setup after CMake installation
+
+Environment variable exported in ~/.bashrc:
+export PATH=/usr/local/cmake/bin:$PATH
