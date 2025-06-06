@@ -4,6 +4,7 @@ mkdir -p ~/projects/gostvpn-lab/security
 cd ~/projects/gostvpn-lab/security
 sudo mkdir -p /security/{certs,private,csr}
 sudo chmod 700 /security/private
+sudo bash -c 'chmod 600 /security/private/*'
 
 ## Generating CA key and certificate
 
