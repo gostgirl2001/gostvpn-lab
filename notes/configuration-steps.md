@@ -23,3 +23,7 @@ sudo OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 /usr/local/openssl-
 
 sudo OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 /usr/local/openssl-gost/bin/openssl genpkey -engine gost -algorithm gost2012_256 -pkeyopt paramset:A -out /security/private/client.key
 sudo OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 /usr/local/openssl-gost/bin/openssl req -engine gost -new -key /security/private/client.key -out /security/csr/client.csr -subj "/CN=client"
+
+## Signing client certificate using CA and GOST engine
+
+sudo OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 /usr/local/openssl-gost/bin/openssl x509 -req -in /security/csr/client.csr -CA /security/certs/ca.crt -CAkey /security/private/ca.key -CAcreateserial -out /security/certs/client.crt -days 3650 -extensions v3_req -extfile /usr/lib/ssl/openssl.cnf -engine gost
