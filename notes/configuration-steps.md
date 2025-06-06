@@ -31,3 +31,7 @@ sudo OPENSSL_ENGINES=/usr/local/openssl-gost/lib/engines-1.1 /usr/local/openssl-
 ## Generating Diffie-Hellman parameters
 
 sudo /usr/local/openssl-gost/bin/openssl dhparam -out /security/certs/dh.pem 2048
+
+## Generating TLS key
+
+sudo /usr/local/openvpn-gost/sbin/openvpn --genkey --secret /security/private/ta.key
