@@ -1,7 +1,7 @@
 ## Setting up OpenVPN 2.5.9 and OpenSSL 1.1.1u with GOST engine support on a VPS
 
 apt update
-apt install git
+apt install git libssl-dev
 
 Post-install:
 Refer to notes/install-steps.md
