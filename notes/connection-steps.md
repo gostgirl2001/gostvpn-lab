@@ -53,6 +53,30 @@ verb 3
 
 nano ~/projects/gostvpn-lab/client.ovpn
 
+Client file contents:
+
+client
+dev tun
+proto tcp
+nobind
+pull
+resolv-retry infinite
+remote [VPS IP] 1194
+auth md_gost12_256
+ca /security/certs/ca.crt
+cert /security/certs/client.crt
+key /security/private/client.key
+cipher grasshopper-cbc
+data-ciphers grasshopper-cbc
+tls-version-min 1.2
+tls-cipher GOST2012-GOST8912-GOST8912
+tls-auth /security/private/ta.key 1
+tls-client
+persist-key
+persist-tun
+verify-x509-name server name
+verb 3
+
 ## Copying configuration files over to the VPS
 
 scp ~/projects/gostvpn-lab/server.ovpn ~/projects/gostvpn-lab/client.ovpn root@[VPS IP]:~/projects/gostvpn-lab/
@@ -85,6 +109,13 @@ init = 1
 In ~/.bashrc:
 export OPENSSL_CONF=/usr/local/openssl-gost/ssl/openssl.cnf
 
-## Starting OpenVPN server
+## Starting OpenVPN server (on VPS)
 
 /usr/local/openvpn-gost/sbin/openvpn --config /etc/openvpn/server.ovpn
+
+## Starting OpenVPN client
+
+sudo /usr/local/openvpn-gost/sbin/openvpn --config ~/projects/gostvpn-lab/client.ovpn
+
+Proof of VPN connection:
+Initialization Sequence Completed
